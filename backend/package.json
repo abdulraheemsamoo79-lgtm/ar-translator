@@ -1,0 +1,17 @@
+{
+  "name": "ar-translator-backend",
+  "version": "1.0.0",
+  "description": "Version-check API for AR Translator app updates",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "fastify": "^4.28.1",
+    "@fastify/cors": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

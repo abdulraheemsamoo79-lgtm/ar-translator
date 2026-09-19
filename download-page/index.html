@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR Translator — by AR PRIME</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B1A18;
+    --bg-raised: #102420;
+    --ink: #F2F1EA;
+    --ink-dim: #9FB3AE;
+    --teal: #1F8A78;
+    --teal-bright: #35C6A8;
+    --amber: #F0A93A;
+    --line: rgba(242,241,234,0.12);
+    --radius: 4px;
+    font-size: 17px;
+  }
+  :root:not([data-theme="light"]) { }
+  :root[data-theme="light"] {
+    --bg: #F6F4EE;
+    --bg-raised: #FFFFFF;
+    --ink: #12211E;
+    --ink-dim: #52645F;
+    --line: rgba(18,33,30,0.12);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+
+  header.top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 0;
+  }
+  .brand { font-family: 'Manrope'; font-weight: 800; letter-spacing: 0.01em; font-size: 1.05rem; }
+  .brand span { color: var(--amber); }
+  nav a.pill {
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 16px; font-size: 0.85rem; font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 40px 0 80px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; padding: 10px 0 56px; }
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.02;
+    margin: 0 0 22px;
+    letter-spacing: -0.01em;
+  }
+  .hero p.lede {
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--ink-dim);
+    max-width: 46ch;
+    margin: 0 0 30px;
+  }
+  .cta-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--teal-bright);
+    color: #06231C;
+    font-weight: 700;
+    padding: 15px 26px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: transform 0.15s ease;
+  }
+  .cta:hover { transform: translateY(-2px); }
+  .cta svg { width: 18px; height: 18px; }
+  .meta-line { font-size: 0.85rem; color: var(--ink-dim); }
+
+  /* multilingual "hello" stack — the hero visual moment */
+  .word-stack {
+    position: relative;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+  .word-stack .w {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+  .word-stack .w1 { font-size: 3.4rem; color: var(--ink); }
+  .word-stack .w2 { font-size: 2.6rem; color: var(--teal-bright); opacity: 0.9; }
+  .word-stack .w3 { font-size: 2rem; color: var(--amber); opacity: 0.85; }
+  .word-stack .w4 { font-size: 1.6rem; color: var(--ink-dim); }
+  .word-stack .w5 { font-size: 1.3rem; color: var(--ink-dim); opacity: 0.7; }
+  @media (max-width: 820px) {
+    .word-stack { height: auto; margin-top: 10px; }
+    .word-stack .w1 { font-size: 2.4rem; }
+    .word-stack .w2 { font-size: 1.9rem; }
+    .word-stack .w3 { font-size: 1.5rem; }
+  }
+
+  /* FEATURES — plain list, structure = information */
+  section.features { padding: 60px 0; border-top: 1px solid var(--line); }
+  .features h2 {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 1.8rem; margin: 0 0 36px;
+  }
+  .flist { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  @media (max-width: 700px) { .flist { grid-template-columns: 1fr; } }
+  .fitem {
+    padding: 22px 0; border-bottom: 1px solid var(--line);
+    display: flex; gap: 16px;
+  }
+  .flist .fitem:nth-child(odd) { padding-right: 28px; }
+  .flist .fitem:nth-child(even) { padding-left: 28px; }
+  @media (max-width: 700px) {
+    .flist .fitem:nth-child(odd), .flist .fitem:nth-child(even) { padding: 22px 0; }
+  }
+  .fitem .num { font-family: 'Fraunces', serif; color: var(--teal-bright); font-size: 1.1rem; min-width: 28px; }
+  .fitem h3 { margin: 0 0 6px; font-size: 1.02rem; font-weight: 700; }
+  .fitem p { margin: 0; color: var(--ink-dim); font-size: 0.92rem; line-height: 1.5; }
+
+  /* VERSION / CHANGELOG */
+  section.version { padding: 56px 0; border-top: 1px solid var(--line); }
+  .vcard {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px 32px;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .vcard .vnum { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600; }
+  .vcard .vlabel { color: var(--ink-dim); font-size: 0.85rem; margin-bottom: 4px; }
+  .changelog { color: var(--ink-dim); font-size: 0.92rem; max-width: 40ch; line-height: 1.5; }
+  .cta.small { padding: 11px 20px; font-size: 0.9rem; }
+
+  footer {
+    padding: 40px 0 60px; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--ink-dim); font-size: 0.85rem; flex-wrap: wrap; gap: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">AR <span>Translator</span></div>
+    <nav><a class="pill" href="#download">Download</a></nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Say it in<br>any language.</h1>
+      <p class="lede">
+        A translator built to actually work when you need it — even with
+        no signal. 59 languages, on-device translation, and every word
+        you've ever looked up saved for later.
+      </p>
+      <div class="cta-row">
+        <a class="cta" id="downloadBtn" href="#" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+          Download for Android
+        </a>
+        <span class="meta-line" id="versionMeta">Version 1.0.0 · APK · Android 7.0+</span>
+      </div>
+    </div>
+    <div class="word-stack" aria-hidden="true">
+      <div class="w w1">Hello</div>
+      <div class="w w2">سلام</div>
+      <div class="w w3">नमस्ते</div>
+      <div class="w w4">こんにちは</div>
+      <div class="w w5">Bonjour</div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Everything a translator should do</h2>
+    <div class="flist">
+      <div class="fitem"><div class="num">01</div><div><h3>Works offline</h3><p>Download a language once over Wi-Fi, then translate it forever with no connection at all.</p></div></div>
+      <div class="fitem"><div class="num">02</div><div><h3>59 languages</h3><p>On-device translation models from Google ML Kit — fast, private, and accurate.</p></div></div>
+      <div class="fitem"><div class="num">03</div><div><h3>Full history</h3><p>Every translation is saved automatically. Search it, star your favorites, or clear it any time.</p></div></div>
+      <div class="fitem"><div class="num">04</div><div><h3>Auto-detect</h3><p>Paste text in any language and let the app figure out what it is.</p></div></div>
+      <div class="fitem"><div class="num">05</div><div><h3>Listen &amp; speak</h3><p>Hear any translation read aloud, in the target language's own accent.</p></div></div>
+      <div class="fitem"><div class="num">06</div><div><h3>Always current</h3><p>The app checks for updates on launch and tells you exactly what's new.</p></div></div>
+    </div>
+  </section>
+
+  <section class="version" id="download">
+    <div class="vcard">
+      <div>
+        <div class="vlabel">Latest release</div>
+        <div class="vnum" id="vnumBig">v1.0.0</div>
+      </div>
+      <div class="changelog" id="changelogText">First release of AR Translator.</div>
+      <a class="cta small" id="downloadBtn2" href="#" download>Get the APK</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>AR Translator — an AR PRIME product</div>
+    <div>Built by AR SAMOON</div>
+  </footer>
+</div>
+
+<script>
+  // Pulls live version info from the same backend the app checks, so this
+  // page never goes stale after you ship an update. Falls back to the
+  // values already in the HTML if the backend can't be reached.
+  const VERSION_ENDPOINT = "https://ar-translator-backend.up.railway.app/version";
+
+  fetch(VERSION_ENDPOINT).then(r => r.json()).then(data => {
+    if (data.downloadUrl) {
+      document.getElementById('downloadBtn').href = data.downloadUrl;
+      document.getElementById('downloadBtn2').href = data.downloadUrl;
+    }
+    if (data.versionName) {
+      document.getElementById('vnumBig').textContent = 'v' + data.versionName;
+      document.getElementById('versionMeta').textContent =
+        'Version ' + data.versionName + ' · APK · Android 7.0+';
+    }
+    if (data.changelog) {
+      document.getElementById('changelogText').textContent = data.changelog;
+    }
+  }).catch(() => { /* keep the static defaults already in the page */ });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "versionCode": 1,
+  "versionName": "1.0.0",
+  "downloadUrl": "https://your-download-page-url.com",
+  "changelog": "First release of AR Translator.",
+  "forceUpdate": false
+}
